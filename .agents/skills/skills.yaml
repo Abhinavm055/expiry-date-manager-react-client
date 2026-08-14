@@ -1,0 +1,9 @@
+name: "react-frontend-standards"
+description: "Core architectural rules and constraints for the react-vite frontend application."
+version: "1.0.0"
+intent_keywords:
+  - "react"
+  - "components"
+  - "pages"
+  - "utility"
+instructions_file: "instructions.md"
