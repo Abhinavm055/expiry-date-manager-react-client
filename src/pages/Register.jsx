@@ -37,11 +37,14 @@ const Register = () => {
         throw new Error(errorMessage);
       }
 
-      // Store token and redirect
+      // Store token and redirect if auto-login is supported
       if (data.token) {
         localStorage.setItem('token', data.token);
+        navigate('/dashboard');
+      } else {
+        // Otherwise redirect to login
+        navigate('/login');
       }
-      navigate('/dashboard'); // Example redirect
     } catch (err) {
       setError(err.message);
     } finally {
