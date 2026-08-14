@@ -10,3 +10,6 @@ Please re-analyze the .agents/skills folder as I have updated the instructions a
 
 ## 3. Closing Task
 I have tested the changes, I'm happy with the results. Please add walkthrough in the .agents history folder.
+
+## 4. Working on Tasks
+Start picking tasks from ./ai/tasks.md file. Work on one task at a time, prepare implementation plan, implement it, wait for my closure confirmation, mark the task done, and then move on to the next task. Do this until all the tasks are done in the tasks.md file.
