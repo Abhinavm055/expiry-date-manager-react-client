@@ -2,6 +2,7 @@
   "name": "expiry-date-manager-react-client",
   "private": true,
   "version": "0.0.0",
+  "author": "M Abhinav",
   "type": "module",
   "scripts": {
     "dev": "vite",
