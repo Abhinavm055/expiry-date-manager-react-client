@@ -1,20 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
 @layer base {
   body {
-    @apply bg-background text-slate-800 font-sans antialiased;
+    @apply bg-[#09090b] text-zinc-100 font-sans antialiased selection:bg-emerald-500 selection:text-black;
+    color-scheme: dark;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Outfit', sans-serif;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-2.5 bg-primary text-white font-medium rounded-lg shadow-sm hover:bg-primary-dark hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95;
+    @apply px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-extrabold rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.35)] hover:shadow-[0_0_28px_rgba(16,185,129,0.55)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 cursor-pointer font-display tracking-wide;
   }
   
   .btn-secondary {
-    @apply px-6 py-2.5 bg-white text-slate-700 font-medium rounded-lg border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-primary transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-95;
+    @apply px-6 py-2.5 bg-zinc-900 text-emerald-400 hover:text-emerald-300 font-bold rounded-xl border border-emerald-500/30 hover:border-emerald-500/80 hover:bg-emerald-950/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-zinc-950 active:scale-95 cursor-pointer font-display tracking-wide;
+  }
+
+  .btn-emerald-outline {
+    @apply px-4 py-2 bg-emerald-950/40 text-emerald-400 border border-emerald-500/40 hover:bg-emerald-900/60 hover:border-emerald-400 font-semibold rounded-xl transition-all cursor-pointer font-display;
   }
 }
