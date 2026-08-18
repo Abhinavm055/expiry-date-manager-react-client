@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { API_BASE_URL } from '../api/config';
 
 const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -27,7 +28,7 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name, email, password }),
       });
 
       const data = await response.json();
@@ -61,11 +62,10 @@ const Register = () => {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <Link to="/" className="flex justify-center items-center cursor-pointer mb-6 group">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-zinc-950 font-black text-2xl shadow-[0_0_20px_rgba(16,185,129,0.5)] group-hover:scale-105 transition-all">
-            ED
-          </div>
+          <img src="/logo.png" alt="Expiry Tracker Logo" className="w-12 h-12 object-contain rounded-xl border border-emerald-500/40 shadow-[0_0_20px_rgba(16,185,129,0.4)] group-hover:scale-105 transition-all" />
+          <span className="ml-3 font-extrabold text-2xl text-white tracking-tight font-display">Expiry<span className="text-emerald-400">Tracker</span></span>
         </Link>
-        <h2 className="mt-2 text-center text-3xl font-extrabold text-white tracking-tight">
+        <h2 className="mt-2 text-center text-3xl font-extrabold text-white tracking-tight font-display">
           Create your account
         </h2>
         <p className="mt-2 text-center text-sm text-zinc-400">
@@ -84,7 +84,26 @@ const Register = () => {
                 {error}
               </div>
             )}
-            
+
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-zinc-300">
+                Full name
+              </label>
+              <div className="mt-1">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="John Doe"
+                  className="appearance-none block w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl shadow-sm placeholder-zinc-500 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 sm:text-sm transition-colors"
+                />
+              </div>
+            </div>
+
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-zinc-300">
                 Email address
@@ -98,6 +117,7 @@ const Register = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  placeholder="john@example.com"
                   className="appearance-none block w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl shadow-sm placeholder-zinc-500 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 sm:text-sm transition-colors"
                 />
               </div>
