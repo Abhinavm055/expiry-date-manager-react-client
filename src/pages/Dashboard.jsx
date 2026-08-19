@@ -31,13 +31,22 @@ const Dashboard = () => {
       if (search) queryParams.append('search', search);
       if (expiresIn) queryParams.append('expiresIn', expiresIn);
 
+      const headers = {};
+      if (token && token !== 'null' && token !== 'undefined') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/products?${queryParams}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
+        headers,
+        credentials: 'include'
       });
       
       if (!response.ok) {
+        if (response.status === 401) {
+          localStorage.removeItem('token');
+          navigate('/login');
+          return;
+        }
         throw new Error('Failed to fetch products');
       }
       
@@ -79,14 +88,23 @@ const Dashboard = () => {
     
     try {
       const token = localStorage.getItem('token');
+      const headers = {};
+      if (token && token !== 'null' && token !== 'undefined') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/products/${productToDelete._id}`, {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
+        headers,
+        credentials: 'include'
       });
       
       if (!response.ok) {
+        if (response.status === 401) {
+          localStorage.removeItem('token');
+          navigate('/login');
+          return;
+        }
         throw new Error('Failed to delete product');
       }
       

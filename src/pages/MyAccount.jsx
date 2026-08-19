@@ -24,8 +24,14 @@ const MyAccount = () => {
       }
     }
 
+    const headers = {};
+    if (token && token !== 'null' && token !== 'undefined') {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     fetch(`${API_BASE_URL}/products?limit=1000`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers,
+      credentials: 'include'
     })
       .then(res => res.json())
       .then(data => {
@@ -66,7 +72,10 @@ const MyAccount = () => {
 
   const handleLogout = async () => {
     try {
-      await fetch(`${API_BASE_URL}/auth/logout`, { method: 'POST' });
+      await fetch(`${API_BASE_URL}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include'
+      });
     } catch (e) {}
     localStorage.removeItem('token');
     navigate('/login');

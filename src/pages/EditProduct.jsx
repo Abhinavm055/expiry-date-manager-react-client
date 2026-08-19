@@ -61,12 +61,17 @@ const EditProduct = () => {
         expiryDate: new Date(formData.expiryDate).toISOString()
       };
 
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      if (token && token !== 'null' && token !== 'undefined') {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
       const response = await fetch(`${API_BASE_URL}/products/${product._id}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
+        headers,
+        credentials: 'include',
         body: JSON.stringify(payload)
       });
 

@@ -9,6 +9,7 @@ const LoggedInHeader = () => {
     try {
       await fetch(`${API_BASE_URL}/auth/logout`, {
         method: 'POST',
+        credentials: 'include'
       });
     } catch (error) {
       console.error('Logout API call failed:', error);
